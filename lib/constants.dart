@@ -8,10 +8,11 @@ Color lightFadedColor = Color.fromRGBO(73, 138, 197, 1);
 
 String currentScreen = "home";
 
-ButtonStyle highlightButtonStyle() {
+ButtonStyle highlightButtonStyle(String checkNamed) {
   return ButtonStyle(
     foregroundColor:
         MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+      if (currentScreen == checkNamed) return darkColor;
       if (states.contains(MaterialState.focused)) return darkColor;
       if (states.contains(MaterialState.hovered)) return darkColor;
       if (states.contains(MaterialState.pressed)) return fadedColor;
@@ -55,7 +56,7 @@ class NavBarButton extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        style: highlightButtonStyle(),
+        style: highlightButtonStyle(checkNamed),
       ),
     );
   }
@@ -65,7 +66,8 @@ List<Widget> navBar = [
   NavBarButton(title: 'Home', checkNamed: 'home', pushNamed: '/'),
   NavBarButton(title: 'About Me', checkNamed: 'home', pushNamed: '/'),
   NavBarButton(title: 'Apps', checkNamed: 'apps', pushNamed: '/apps'),
-  NavBarButton(title: 'Websites', checkNamed: 'home', pushNamed: '/'),
+  NavBarButton(
+      title: 'Websites', checkNamed: 'websites', pushNamed: '/websites'),
   NavBarButton(title: 'Classes', checkNamed: 'home', pushNamed: '/'),
 ];
 
