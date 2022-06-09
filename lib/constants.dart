@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 Color lightColor = Color.fromRGBO(155, 206, 250, 1);
 Color darkColor = Color.fromRGBO(47, 88, 124, 1);
@@ -64,11 +65,11 @@ class NavBarButton extends StatelessWidget {
 
 List<Widget> navBar = [
   NavBarButton(title: 'Home', checkNamed: 'home', pushNamed: '/'),
-  NavBarButton(title: 'About Me', checkNamed: 'home', pushNamed: '/'),
   NavBarButton(title: 'Apps', checkNamed: 'apps', pushNamed: '/apps'),
   NavBarButton(
       title: 'Websites', checkNamed: 'websites', pushNamed: '/websites'),
-  NavBarButton(title: 'Classes', checkNamed: 'home', pushNamed: '/'),
+  NavBarButton(
+      title: 'Classes', checkNamed: 'classes', pushNamed: '/summer-classes'),
 ];
 
 class CustomAppBar extends StatelessWidget {
@@ -102,4 +103,96 @@ ButtonStyle outlinedButtonStyle(Color borderColor) {
       borderRadius: BorderRadius.circular(9),
     ),
   );
+}
+
+class DescriptionCard extends StatelessWidget {
+  const DescriptionCard({
+    Key? key,
+    required this.size,
+    required this.bodyText,
+    required this.headerText,
+    required this.urlLaunch,
+  }) : super(key: key);
+
+  final Size size;
+  final String bodyText;
+  final String headerText;
+  final String urlLaunch;
+
+  void launchUrl(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: size.width * 0.03, vertical: size.height * 0.05),
+      child: Container(
+        width: size.width * 0.9,
+        padding: EdgeInsets.all(size.longestSide * 0.015),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "$headerText",
+              style: TextStyle(
+                color: fadedColor,
+                fontSize: size.longestSide * 0.03,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.015,
+            ),
+            Container(
+              width: size.width * 0.9,
+              child: Text(
+                "$bodyText",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: size.longestSide * 0.012,
+                ),
+                softWrap: true,
+              ),
+            ),
+            urlLaunch == ""
+                ? SizedBox(
+                    height: 0,
+                    width: 0,
+                  )
+                : Column(
+                    children: [
+                      SizedBox(
+                        height: size.height * 0.015,
+                      ),
+                      OutlinedButton(
+                        onPressed: () {
+                          launchUrl(urlLaunch);
+                        },
+                        child: Text(
+                          "Download Now",
+                          style: TextStyle(
+                            fontSize: size.longestSide * 0.015,
+                            color: darkColor,
+                          ),
+                        ),
+                        style: outlinedButtonStyle(darkColor),
+                      ),
+                    ],
+                  )
+          ],
+        ),
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
+  }
 }

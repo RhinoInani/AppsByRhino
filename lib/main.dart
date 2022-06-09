@@ -1,3 +1,4 @@
+import 'package:apps_by_rhino/classes.dart';
 import 'package:apps_by_rhino/websites.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         // 'about-me': (context) => AboutMePage(),
         '/apps': (context) => AppsPage(),
         '/websites': (context) => WebsitesPage(),
-        // '/classes': (context) => ClassesPage(),
+        '/summer-classes': (context) => ClassesPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
