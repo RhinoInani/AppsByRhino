@@ -1,4 +1,5 @@
 import 'package:apps_by_rhino/constants.dart';
+import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 
 class WebsitesPage extends StatefulWidget {
@@ -9,15 +10,25 @@ class WebsitesPage extends StatefulWidget {
 }
 
 class _WebsitesPageState extends State<WebsitesPage> {
-  String title = "Impromptu Generator";
+  String title = "MV Bookshelf";
+  String description = '''
+Monta Vista Bookshelf is a club at Monta Vista High School which aims to educate and demonstrate students that reading is fun and interesting!
+This is done through exciting events, and a bi-weekly reading schedule that engages and interests students in reading!
+Alongside this we have also partnered with other book organizations to create bookdrives and so much more!
 
-  String description =
-      "A quick and easy way to practice Impromptu speeches for your upcoming tournaments! \nThis app to help you prepare for your upcoming speech tournaments for Impromptu! It follows the National Speech and Debate Association (NSDA) format for speaking. While the default times follow the NSDA guidelines, you can customize the times based on your requirements. The app can also now convert your speech to text and analyze the confidence levels in your voice! Happy Speaking!";
-
-  String url = "https://smarturl.it/impromptugenerator";
+This website will show you all the information regarding MV Bookshelf!
+                                    ''';
+  String url = "https://mvbookshelf.com";
 
   @override
   Widget build(BuildContext context) {
+    Tween<double> buildFadeTween() {
+      return Tween<double>(
+        begin: 0,
+        end: 1,
+      );
+    }
+
     Size size = MediaQuery.of(context).size;
     currentScreen = "websites";
     return Title(
@@ -37,111 +48,157 @@ class _WebsitesPageState extends State<WebsitesPage> {
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: CustomScrollView(
-            slivers: [
-              CustomAppBar(),
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  SizedBox(
-                    height: size.height * 0.07,
-                  ),
-                  Flex(
-                    direction:
-                        size.width < 450 ? Axis.vertical : Axis.horizontal,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      MouseRegion(
-                        onEnter: (_) {
-                          setState(() {
-                            title = "MV Bookshelf";
-                            description =
-                                "A quick and easy way to practice Impromptu speeches for your upcoming tournaments! \nThis app to help you prepare for your upcoming speech tournaments for Impromptu! It follows the National Speech and Debate Association (NSDA) format for speaking. While the default times follow the NSDA guidelines, you can customize the times based on your requirements. The app can also now convert your speech to text and analyze the confidence levels in your voice! Happy Speaking!";
-                            url = "https://mvbookshelf.com";
-                          });
-                        },
-                        child: Container(
-                          decoration: avatarShadow(size, "MV Bookshelf"),
-                          child: CircleAvatar(
-                            child: Image.asset("assets/bslogo.png"),
-                            backgroundColor: darkColor,
-                            maxRadius: size.longestSide * 0.13,
-                          ),
-                        ),
-                      ),
-                      MouseRegion(
-                        onEnter: (_) {
-                          setState(() {
-                            title = "Peru Education Movement";
-                            description = '''
-Want to clean your screen and your keyboard without disrupting your workflow? Pristine Screen is here to help! 
+          body: AnimateIfVisibleWrapper(
+            child: CustomScrollView(
+              slivers: [
+                CustomAppBar(),
+                SliverList(
+                  delegate: SliverChildListDelegate([
+                    SizedBox(
+                      height: size.height * 0.07,
+                    ),
+                    AnimateIfVisible(
+                      key: Key('item0'),
+                      duration: Duration(milliseconds: 700),
+                      builder: (
+                        context,
+                        Animation<double> animation,
+                      ) =>
+                          FadeTransition(
+                        opacity: buildFadeTween().animate(animation),
+                        child: Flex(
+                          direction: size.width < 450
+                              ? Axis.vertical
+                              : Axis.horizontal,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  title = "MV Bookshelf";
+                                  description = '''
+Monta Vista Bookshelf is a club at Monta Vista High School which aims to educate and demonstrate students that reading is fun and interesting!
+This is done through exciting events, and a bi-weekly reading schedule that engages and interests students in reading!
+Alongside this we have also partnered with other book organizations to create bookdrives and so much more!
 
-After an easy 3 step process you'll never have a dirty computer again!
-1. Click on "Start Cleaning Session"
-2. Clean your computer
-3. Hold the space bar to exit
+This website will show you all the information regarding MV Bookshelf!
+                                      ''';
+                                  url = "https://mvbookshelf.com";
+                                });
+                              },
+                              child: MouseRegion(
+                                onEnter: (_) {
+                                  setState(() {
+                                    title = "MV Bookshelf";
+                                    description = '''
+Monta Vista Bookshelf is a club at Monta Vista High School which aims to educate and demonstrate students that reading is fun and interesting!
+This is done through exciting events, and a bi-weekly reading schedule that engages and interests students in reading!
+Alongside this we have also partnered with other book organizations to create bookdrives and so much more!
 
-Pristine Screen simplifies the process of cleaning your computer. With a quick launch time and a simple interface you can clean your computer in no time!
-
-Pristine Clean keeps your computer clean!
-                            ''';
-                            url = "https://perueducationmovement.org";
-                          });
-                        },
-                        child: Container(
-                          decoration:
-                              avatarShadow(size, "Peru Education Movement"),
-                          child: CircleAvatar(
-                            child: ClipOval(
-                              child: Image.asset("assets/pemlogo.png"),
+This website will show you all the information regarding MV Bookshelf!
+                                      ''';
+                                    url = "https://mvbookshelf.com";
+                                  });
+                                },
+                                child: Container(
+                                  decoration:
+                                      avatarShadow(size, "MV Bookshelf"),
+                                  child: CircleAvatar(
+                                    child: Image.asset("assets/bslogo.png"),
+                                    backgroundColor: darkColor,
+                                    maxRadius: size.longestSide * 0.13,
+                                  ),
+                                ),
+                              ),
                             ),
-                            backgroundColor: darkColor,
-                            maxRadius: size.longestSide * 0.13,
-                          ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  title = "Peru Education Movement";
+                                  description = '''
+Project Peru was initially established as part of the Learn Care Share initiative(501(c) non profit) to offer free English classes to a few students from low-income families in a small town of Huariaca, Peru. This project was started by Mercedes Canham, a Peru Native, with the help of a few Bay Area high school students who are fluent in Spanish. Soon Ms. Canhan realized that she needed to involve more tutors to scale up this program and benefit more kids in Peru. At the pandemic's beginning, Canham reached out to us and asked if a few students from Monta Vista could teach more kids from Peruvian villages over Zoom.
+
+The website below is the official website for PEM and hosts all their resources and information!
+                                    ''';
+                                  url = "https://perueducationmovement.org";
+                                });
+                              },
+                              child: MouseRegion(
+                                onEnter: (_) {
+                                  setState(() {
+                                    title = "Peru Education Movement";
+                                    description = '''
+Project Peru was initially established as part of the Learn Care Share initiative(501(c) non profit) to offer free English classes to a few students from low-income families in a small town of Huariaca, Peru. This project was started by Mercedes Canham, a Peru Native, with the help of a few Bay Area high school students who are fluent in Spanish. Soon Ms. Canhan realized that she needed to involve more tutors to scale up this program and benefit more kids in Peru. At the pandemic's beginning, Canham reached out to us and asked if a few students from Monta Vista could teach more kids from Peruvian villages over Zoom.
+
+The website below is the official website for PEM and hosts all their resources and information!
+                                    ''';
+                                    url = "https://perueducationmovement.org";
+                                  });
+                                },
+                                child: Container(
+                                  decoration: avatarShadow(
+                                      size, "Peru Education Movement"),
+                                  child: CircleAvatar(
+                                    child: ClipOval(
+                                      child: Image.asset("assets/pemlogo.png"),
+                                    ),
+                                    backgroundColor: darkColor,
+                                    maxRadius: size.longestSide * 0.13,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  title = "Classic Awareness for Teens";
+                                  description = '''
+Classic Awareness for Teens (CAFT) is meant to inspire and teach middle schoolers and teens about classic american literature. 
+This is a 501(c) non-profit that has active events and lots more incoming so stay tuned! 
+
+Information about the site can be accessed below! 
+                                    ''';
+                                  url = "https://classicaft.web.app";
+                                });
+                              },
+                              child: MouseRegion(
+                                onEnter: (_) {
+                                  setState(() {
+                                    title = "Classic Awareness for Teens";
+                                    description = '''
+Classic Awareness for Teens (CAFT) is meant to inspire and teach middle schoolers and teens about classic american literature. 
+This is a 501(c) non-profit that has active events and lots more incoming so stay tuned! 
+
+Information about the site can be accessed below!          
+                                    ''';
+                                    url = "https://classicaft.web.app";
+                                  });
+                                },
+                                child: Container(
+                                  decoration: avatarShadow(
+                                      size, "Classic Awareness for Teens"),
+                                  child: CircleAvatar(
+                                    child: Image.asset("assets/caftlogo.png"),
+                                    backgroundColor: darkColor,
+                                    maxRadius: size.longestSide * 0.13,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      MouseRegion(
-                        onEnter: (_) {
-                          setState(() {
-                            title = "Classic Awareness for Teens";
-                            description = '''
-Thank You is a goal oriented minimalistic donation tracker that helps keep track of your donations throughout the year. 
-
-Tracking your donations shouldn't be so hard. It should be simple quick and easy. Small donations or large donations, Thank You can handle it all!
-
-Thank You encourages users to fulfill their set donation goal each year with its goal oriented mindset. With many tools to help you budget your donations throughout the year and constant updates you will never find yourself needing another donation tracker. Thank You also includes a variety of features that help users keep track of individual donations such as pictures/receipts, custom dates, variety of currencies, and much more! Alongside this we include our safe storage system which requires no login and saves everything to your device. All of this combined with our minimalist interface makes Thank You your one stop destination for keeping track of your donations throughout the year. Hope you enjoy and thank you for giving back to your community!
-
-How it works:
-1. Enter your annual donation goal
-2. Add your recent donations
-3. Keep track of your donations throughout the year with Thank You’s various features
-4. Sit back and let the Thank You do the rest
-
-**Thank You is not a donation transaction app, but a donation tracker.**                            
-                            ''';
-                            url = "https://classicaft.web.app";
-                          });
-                        },
-                        child: Container(
-                          decoration:
-                              avatarShadow(size, "Classic Awareness for Teens"),
-                          child: CircleAvatar(
-                            child: Image.asset("assets/caftlogo.png"),
-                            backgroundColor: darkColor,
-                            maxRadius: size.longestSide * 0.13,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  DescriptionCard(
-                    size: size,
-                    bodyText: description,
-                    headerText: title,
-                    urlLaunch: url,
-                  ),
-                ]),
-              ),
-            ],
+                    ),
+                    DescriptionCard(
+                      size: size,
+                      bodyText: description,
+                      headerText: title,
+                      urlLaunch: url,
+                    ),
+                  ]),
+                ),
+              ],
+            ),
           ),
         ),
       ),

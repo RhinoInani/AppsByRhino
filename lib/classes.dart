@@ -1,6 +1,7 @@
 import 'package:apps_by_rhino/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ClassesPage extends StatefulWidget {
   const ClassesPage({Key? key}) : super(key: key);
@@ -18,6 +19,14 @@ Hand-on: Creating a simple "Hello World" app and to play around with styling and
   ''';
 
   String url = "";
+
+  void launchUrl(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +104,10 @@ Hand-on: Creating a simple "Hello World" app and to play around with styling and
                               vertical: size.height * 0.06),
                           width: size.longestSide * 0.2,
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              launchUrl(
+                                  'https://docs.google.com/forms/d/e/1FAIpQLSdTvDNFR4gpxYJnt7_aZe3J5fAW8htnGUkbGCdOtMKcVJpnJw/viewform?usp=sf_link');
+                            },
                             child: Text(
                               "Enroll Now",
                               style: TextStyle(
