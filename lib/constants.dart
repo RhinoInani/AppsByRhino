@@ -64,7 +64,7 @@ class NavBarButton extends StatelessWidget {
 }
 
 List<Widget> navBar = [
-  NavBarButton(title: 'Home', checkNamed: 'home', pushNamed: '/'),
+  // NavBarButton(title: 'Home', checkNamed: 'home', pushNamed: '/'),
   NavBarButton(title: 'Apps', checkNamed: 'apps', pushNamed: '/apps'),
   NavBarButton(
       title: 'Websites', checkNamed: 'websites', pushNamed: '/websites'),

@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   animated_text_kit: ^4.2.2
   google_fonts: ^3.0.1
   wave: ^0.2.0

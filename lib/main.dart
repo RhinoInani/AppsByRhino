@@ -1,4 +1,5 @@
 import 'package:apps_by_rhino/classes.dart';
+import 'package:apps_by_rhino/configure_web.dart';
 import 'package:apps_by_rhino/websites.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,6 +8,7 @@ import 'apps.dart';
 import 'home.dart';
 
 void main() {
+  configureApp();
   runApp(const MyApp());
 }
 
@@ -20,7 +22,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/home': (contact) => HomePage(),
-        // 'about-me': (context) => AboutMePage(),
         '/apps': (context) => AppsPage(),
         '/websites': (context) => WebsitesPage(),
         '/summer-classes': (context) => ClassesPage(),

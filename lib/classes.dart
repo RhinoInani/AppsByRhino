@@ -60,6 +60,7 @@ Hand-on: Creating a simple "Hello World" app and to play around with styling and
                 elevation: 0,
                 backgroundColor: Colors.transparent,
                 expandedHeight: size.height * 0.4,
+                collapsedHeight: size.height * 0.1,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   expandedTitleScale: 3,
@@ -155,6 +156,25 @@ Hand-on: Creating a simple "Hello World" app and to play around with styling and
                           date: "10",
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: size.height * 0.09,
+                    ),
+                    Center(
+                      child: Text(
+                        "3-4 PM\non Zoom",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: size.longestSide * 0.04,
+                          color: lightColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.09,
+                    ),
+                    Divider(
+                      color: fadedColor,
                     ),
                     SizedBox(
                       height: size.height * 0.09,
@@ -364,7 +384,9 @@ Special: Introduce mentorship program!
           BoxShadow(
             color: Colors.grey[900]!,
             blurRadius: title == "$check" ? 10 : 0,
-            offset: title == "$check" ? Offset(0, 10) : Offset(0, 0),
+            offset: title == "$check"
+                ? Offset(0, size.height * 0.009)
+                : Offset(0, 0),
           ),
         ]);
   }
@@ -392,7 +414,9 @@ class DatesCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-                color: Colors.grey[900]!, blurRadius: 10, offset: Offset(0, 10))
+                color: Colors.grey[900]!,
+                blurRadius: 10,
+                offset: Offset(0, size.height * 0.009))
           ]),
       padding: EdgeInsets.all(size.longestSide * 0.01),
       child: RichText(

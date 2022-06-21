@@ -111,6 +111,9 @@ This website will show you all the information regarding MV Bookshelf!
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              height: size.height * 0.03,
+                            ),
                             GestureDetector(
                               onTap: () {
                                 setState(() {
@@ -147,6 +150,9 @@ The website below is the official website for PEM and hosts all their resources 
                                   ),
                                 ),
                               ),
+                            ),
+                            SizedBox(
+                              height: size.height * 0.03,
                             ),
                             GestureDetector(
                               onTap: () {
